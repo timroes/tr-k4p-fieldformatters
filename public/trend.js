@@ -35,10 +35,14 @@ function TrendProvider(Private) {
     The second argument will be the field, that should be rendered.
       The object contains information like the type (`field.type`), that you might want to use
       if you want to render differently depending on the field's type.
+      This can also be undefined, e.g. when formatting the field in a visualization due to the aggregation
+      this information is lost.
   */
   Trend.prototype._convert = {
-    html: function(value, field) {
-      console.log(field.type);
+    text: function(value) {
+      return value;
+    },
+    html: function(value) {
       var html = value + ' ';
       if (value > 0) {
         html += '<span style="color:#419E63">↗</span>';
